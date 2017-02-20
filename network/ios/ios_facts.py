@@ -198,11 +198,11 @@ class Default(FactsBase):
 class Hardware(FactsBase):
 
     def populate(self):
-        data = self.run('dir | include Directory')
+        data = self.run('dir')
         if data:
             self.facts['filesystems'] = self.parse_filesystems(data)
 
-        data = self.run('show memory statistics | include Processor')
+        data = self.run('show memory statistics')
         if data:
             match = re.findall(r'\s(\d+)\s', data)
             if match:
